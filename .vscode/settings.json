@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "glfw3.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "stdint.h": "c",
+        "stdbool.h": "c"
     }
 }
