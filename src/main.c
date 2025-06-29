@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <cglm/cglm.h>
+#include <cglm/types-struct.h>
 
 #include "shaders.h"
 
@@ -122,6 +124,28 @@ int main(void){
     if(err != SHADER_ERR_SUCCESS){
         return err;
     }
+
+    mat4 mat;
+
+    // making the translation vector
+    vec3 transVec = {1.0f, 1.0f, 0.0f};
+    // creating the required matrix from the translation vector
+    glm_translate_make(mat, transVec);
+    // original "position" to translate
+    vec4 vec = {1.0f, 0.0f, 0.0f, 1.0f};
+    // get final position
+    vec4s final;
+    glm_mat4_mulv(mat, vec, final.raw);
+    printf("%f, %f, %f\n\n\n", final.x, final.y, final.z);
+
+    // look at : https://cglm.readthedocs.io/en/latest/affine.html
+    // SCALE -> ROTATE -> TRANSLATE
+    // glm_mat4_mulN((mat4 *[]){&transform3, &transform2, &transform1}, 3, finalTransform);
+    // Now transform1 will be applied first, then transform2 then transform3
+    // so transform 1 -> scale, transform 2 -> rotation, transform 3-> scale
+
+
+
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 

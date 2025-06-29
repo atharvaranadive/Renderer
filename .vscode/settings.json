@@ -3,6 +3,9 @@
         "glfw3.h": "c",
         "time.h": "c",
         "stdint.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "common.h": "c",
+        "shaders.h": "c",
+        "cglm.h": "c"
     }
 }
