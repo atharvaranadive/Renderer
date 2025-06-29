@@ -90,12 +90,98 @@ int UseShader(Shader* shader){
 
 }
 
+/**
+ * @brief Deletes previously created shader
+ * 
+ * @param shader 
+ * @return int 
+ */
 int DeleteShader(Shader* shader){
     glDeleteProgram(shader->m_ID);
     shader->m_using = false;
     shader->m_linked = false;
     shader->m_ID = 0;
     return SHADER_ERR_SUCCESS;
+}
+
+/**
+ * @brief Set a Bool uniform related to shader
+ * 
+ * @param [in] Shader shader
+ * @param [in] name name of uniform
+ * @param [in] value value to set to
+ * @return int SHADER_ERR
+ */
+int SetBool(const Shader* shader, const char* name, bool value){
+
+    if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
+
+    GLint loc = glGetUniformLocation(shader->m_ID, name);
+    if(loc == GL_INVALID_VALUE) return SHADER_ERR_NOT_COMPILED;
+    if(loc == GL_INVALID_OPERATION) return SHADER_ERR_UNIFORM_NOT_FOUND;
+
+    glUniform1i(loc, (int)value);
+
+    return SHADER_ERR_SUCCESS;
+
+}
+
+/**
+ * @brief Set a Int uniform related to shader
+ * 
+ * @param [in] Shader shader
+ * @param [in] name name of uniform
+ * @param [in] value value to set to
+ * @return int SHADER_ERR
+ */
+int SetInt(const Shader* shader, const char* name, int value){
+
+    if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
+
+    GLint loc = glGetUniformLocation(shader->m_ID, name);
+    if(loc == GL_INVALID_VALUE) return SHADER_ERR_NOT_COMPILED;
+    if(loc == GL_INVALID_OPERATION) return SHADER_ERR_UNIFORM_NOT_FOUND;
+
+    glUniform1i(loc, value);
+
+    return SHADER_ERR_SUCCESS;
+
+}
+
+/**
+ * @brief Set a float uniform related to shader
+ * 
+ * @param [in] Shader shader
+ * @param [in] name name of uniform
+ * @param [in] value value to set to
+ * @return int SHADER_ERR
+ */
+int SetFloat(const Shader* shader, const char* name, float value){
+
+    if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
+
+    GLint loc = glGetUniformLocation(shader->m_ID, name);
+    if(loc == GL_INVALID_VALUE) return SHADER_ERR_NOT_COMPILED;
+    if(loc == GL_INVALID_OPERATION) return SHADER_ERR_UNIFORM_NOT_FOUND;
+
+    glUniform1f(loc, value);
+
+    return SHADER_ERR_SUCCESS;
+
+}
+
+int SetFloat3(const Shader *shader, const char *name, float value1, float value2, float value3){
+    
+    if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
+
+    GLint loc = glGetUniformLocation(shader->m_ID, name);
+    if(loc == GL_INVALID_VALUE) return SHADER_ERR_NOT_COMPILED;
+    if(loc == GL_INVALID_OPERATION) return SHADER_ERR_UNIFORM_NOT_FOUND;
+
+    glUniform3f(loc, value1, value2, value3);
+
+    return SHADER_ERR_SUCCESS;
+
 }
 
 /**

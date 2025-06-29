@@ -12,7 +12,8 @@ typedef enum {
    SHADER_ERR_NOT_READ_FULL_FILE = 3,
    SHADER_ERR_NOT_COMPILED = 4,
    SHADER_ERR_LINKING_FAILED = 5,
-   SHADER_ERR_ACTIVE_FAILED = 6
+   SHADER_ERR_ACTIVE_FAILED = 6,
+   SHADER_ERR_UNIFORM_NOT_FOUND = 7
 } SHADER_ERR;
 
 typedef struct {
@@ -26,6 +27,10 @@ int CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmen
 int UseShader(Shader* shader);
 int DeleteShader(Shader* shader);
 
+int SetBool(const Shader* shader, const char* name, bool value);
+int SetInt(const Shader* Shader, const char* name, int value);
+int SetFloat(const Shader* shader, const char* name, float value);
 
+int SetFloat3(const Shader* shader, const char* name, float value1, float value2, float value3);
 
 #endif // SHADERS_H

@@ -2,6 +2,7 @@
 #include <glfw3.h>
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 #include "shaders.h"
 
@@ -22,10 +23,10 @@ long timediff(clock_t t1, clock_t t2) {
 }
 
 float vertRect1[] = {
-    -0.15f, 0.85f, 0.0f,  // top right
-    -0.15f, 0.15f, 0.0f,  // bottom right
-    -0.85f, 0.15f, 0.0f,  // bottom left
-    -0.85f, 0.85f, 0.0f   // top left 
+    -0.15f, 0.85f, 0.0f,     1.0f, 0.0f, 0.0f,  // top right
+    -0.15f, 0.15f, 0.0f,     0.0f, 1.0f, 0.0f, // bottom right
+    -0.85f, 0.15f, 0.0f,     0.0f, 0.0f, 1.0f, // bottom left
+    -0.85f, 0.85f, 0.0f,     1.0f, 1.0f, 1.0f,   // top left 
 };
 unsigned int indRect1[] = {  // note that we start from 0!
     0, 1, 3,  // first Triangle
@@ -33,10 +34,10 @@ unsigned int indRect1[] = {  // note that we start from 0!
 };
 
 float vertRect2[] = {
-    0.85f, -0.15f, 0.0f,  // top right
-    0.85f, -0.85f, 0.0f,  // bottom right
-    0.15f, -0.85f, 0.0f,  // bottom left
-    0.15f, -0.15f, 0.0f   // top left 
+    0.85f, -0.15f, 0.0f,  1.0f, 0.0f, 0.0f,// top right
+    0.85f, -0.85f, 0.0f,  0.0f, 1.0f, 0.0f,// bottom right
+    0.15f, -0.85f, 0.0f,  0.0f, 0.0f, 1.0f,// bottom left
+    0.15f, -0.15f, 0.0f,  0.5f, 0.5f, 0.5f,// top left 
 };
 unsigned int indRect2[] = {  // note that we start from 0!
     0, 1, 3,  // first Triangle
@@ -87,8 +88,11 @@ int main(void){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indRect1), indRect1, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0); 
+    
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // resetting/unbinding, not usually used
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -103,8 +107,11 @@ int main(void){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[1]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indRect2), indRect2, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -128,10 +135,18 @@ int main(void){
         glClear(GL_COLOR_BUFFER_BIT);
 
         UseShader(&shader);
+        float timeValue = glfwGetTime();
+        float offsetA = (sin(timeValue) /2.0f);
+        float offsetB = (cos(timeValue) / 2.0f);
+        SetFloat3(&shader, "offset", offsetA, offsetB, 0.0f);
+
+
         glBindVertexArray(VAO[0]);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
         // glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        SetFloat3(&shader, "offset", -offsetA, -offsetB, 0.0f);
 
         glBindVertexArray(VAO[1]);
         // glDrawArrays(GL_TRIANGLES, 0, 3);
