@@ -1,0 +1,7 @@
+D:\Programs\RendererVS\src\main.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\main.obj
+D:\Programs\RendererVS\src\Rectangle.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\Rectangle.obj
+D:\Programs\RendererVS\src\RoundedRect.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\RoundedRect.obj
+D:\Programs\RendererVS\src\Shaders.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\Shaders.obj
+D:\Programs\RendererVS\src\Triangles.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\Triangles.obj
+D:\Programs\RendererVS\vendor\inc\glm\detail\glm.cpp;D:\Programs\RendererVS\RendererVS\x64\Debug\glm.obj
+D:\Programs\RendererVS\vendor\src\glad.c;D:\Programs\RendererVS\RendererVS\x64\Debug\glad.obj

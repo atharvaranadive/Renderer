@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programs\\RendererVS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\src\\RoundedRect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:src\\RoundedRect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\inc\\RoundedRect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:inc\\RoundedRect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\src\\Triangles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:src\\Triangles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\inc\\Rectangles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:inc\\Rectangles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\src\\Rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:src\\Rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\inc\\Triangles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:inc\\Triangles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\inc\\Shaders.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:inc\\Shaders.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\shaders\\vertexShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:shaders\\vertexShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\shaders\\fragmentShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:shaders\\fragmentShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\src\\Shaders.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:src\\Shaders.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|D:\\Programs\\RendererVS\\vendor\\src\\glad.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{75774934-6EF9-4161-B067-5A1E8F93F221}|RendererVS.vcxproj|solutionrelative:vendor\\src\\glad.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 361,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoundedRect.h",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\inc\\RoundedRect.h",
+              "RelativeDocumentMoniker": "inc\\RoundedRect.h",
+              "ToolTip": "D:\\Programs\\RendererVS\\inc\\RoundedRect.h",
+              "RelativeToolTip": "inc\\RoundedRect.h",
+              "ViewState": "AQIAABMAAAAAAAAAAAAtwDsAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-06T23:31:28.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Triangles.cpp",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\src\\Triangles.cpp",
+              "RelativeDocumentMoniker": "src\\Triangles.cpp",
+              "ToolTip": "D:\\Programs\\RendererVS\\src\\Triangles.cpp",
+              "RelativeToolTip": "src\\Triangles.cpp",
+              "ViewState": "AQIAABsAAAAAAAAAAAAmwDcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-30T20:31:58.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\src\\main.cpp",
+              "RelativeDocumentMoniker": "src\\main.cpp",
+              "ToolTip": "D:\\Programs\\RendererVS\\src\\main.cpp",
+              "RelativeToolTip": "src\\main.cpp",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAFwAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-30T05:57:35.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Rectangles.h",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\inc\\Rectangles.h",
+              "RelativeDocumentMoniker": "inc\\Rectangles.h",
+              "ToolTip": "D:\\Programs\\RendererVS\\inc\\Rectangles.h",
+              "RelativeToolTip": "inc\\Rectangles.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-05T20:40:34.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Shaders.h",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\inc\\Shaders.h",
+              "RelativeDocumentMoniker": "inc\\Shaders.h",
+              "ToolTip": "D:\\Programs\\RendererVS\\inc\\Shaders.h",
+              "RelativeToolTip": "inc\\Shaders.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-30T06:10:08.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "vertexShader.glsl",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\shaders\\vertexShader.glsl",
+              "RelativeDocumentMoniker": "shaders\\vertexShader.glsl",
+              "ToolTip": "D:\\Programs\\RendererVS\\shaders\\vertexShader.glsl",
+              "RelativeToolTip": "shaders\\vertexShader.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-30T20:21:45.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "fragmentShader.glsl",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\shaders\\fragmentShader.glsl",
+              "RelativeDocumentMoniker": "shaders\\fragmentShader.glsl",
+              "ToolTip": "D:\\Programs\\RendererVS\\shaders\\fragmentShader.glsl",
+              "RelativeToolTip": "shaders\\fragmentShader.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-30T20:21:21.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "glad.c",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\vendor\\src\\glad.c",
+              "RelativeDocumentMoniker": "vendor\\src\\glad.c",
+              "ToolTip": "D:\\Programs\\RendererVS\\vendor\\src\\glad.c",
+              "RelativeToolTip": "vendor\\src\\glad.c",
+              "ViewState": "AQIAABoBAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-06-30T06:04:07.944Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 273,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Rectangle.cpp",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\src\\Rectangle.cpp",
+              "RelativeDocumentMoniker": "src\\Rectangle.cpp",
+              "ToolTip": "D:\\Programs\\RendererVS\\src\\Rectangle.cpp",
+              "RelativeToolTip": "src\\Rectangle.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG0AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-05T20:40:22.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoundedRect.cpp",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\src\\RoundedRect.cpp",
+              "RelativeDocumentMoniker": "src\\RoundedRect.cpp",
+              "ToolTip": "D:\\Programs\\RendererVS\\src\\RoundedRect.cpp",
+              "RelativeToolTip": "src\\RoundedRect.cpp",
+              "ViewState": "AQIAABwAAAAAAAAAAAAiwHIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-06T23:31:16.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Triangles.h",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\inc\\Triangles.h",
+              "RelativeDocumentMoniker": "inc\\Triangles.h",
+              "ToolTip": "D:\\Programs\\RendererVS\\inc\\Triangles.h",
+              "RelativeToolTip": "inc\\Triangles.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-30T20:32:12.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Shaders.cpp",
+              "DocumentMoniker": "D:\\Programs\\RendererVS\\src\\Shaders.cpp",
+              "RelativeDocumentMoniker": "src\\Shaders.cpp",
+              "ToolTip": "D:\\Programs\\RendererVS\\src\\Shaders.cpp",
+              "RelativeToolTip": "src\\Shaders.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAALgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-30T06:16:36.953Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

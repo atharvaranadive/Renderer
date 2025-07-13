@@ -1,257 +1,136 @@
+#include "glad.h"
+#include "glfw3.h"
+#include <glm/glm.hpp>
+#include <cstdlib>
 #include <iostream>
 #include <array>
-#include <vector> 
-#include <shaders.h>
-#include <unordered_set>
-#include <string>
+#include "Shaders.h"
+#include "Triangles.h"
+#include "Rectangles.h"
+#include "RoundedRect.h"
 
-int main(void){
-    std::cout << "HELLO WORLD" << std::endl;
-    std::array<float, 3> test = {0,1,2};
-    std::cout << test[0] << std::endl;
-    std::vector<int> wow;
-    wow.push_back(10);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-    if (__cplusplus == 202302L) std::cout << "C++23";
-    else if (__cplusplus == 202002L) std::cout << "C++20";
-    else if (__cplusplus == 201703L) std::cout << "C++17";
-    else if (__cplusplus == 201402L) std::cout << "C++14";
-    else if (__cplusplus == 201103L) std::cout << "C++11";
-    else if (__cplusplus == 199711L) std::cout << "C++98";
-    else std::cout << "pre-standard C++." << __cplusplus;
-    std::cout << "\n";
-    int* blah = (int*)calloc(2, sizeof(int));
-    std::string str = "testtest";
-    str = "sdfsdfasdfsdfasdfasdf";
-
-    // blah.push_back(2);
-
-
-    // for(int n: v){
-    //     std::cout << n << ' ';
-    // }
-    // std::cout << std::endl;
-    // return 0;
+float raf(float a, float b) {
+    float random = ((float)rand()) / (float)RAND_MAX;
+    float diff = b - a;
+    float r = random * diff;
+    return a + r;
 }
 
+int main(void) {
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-// #include <glad.h>
-// #include <glfw3.h>
-// #include <stdio.h>
-// #include <time.h>
-// #include <math.h>
-// #include <cglm/cglm.h>
-// #include <cglm/types-struct.h>
+    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    if (window == NULL)
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+    glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-// #include "shaders.h"
-// #include "points.h"
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }
 
-// void framebuffer_size_callback(GLFWwindow* window, int width, int height){
-//     glViewport(0, 0, width, height);
-// }  
+    glViewport(0, 0, 800, 600);
 
-// void processInput(GLFWwindow *window)
-// {
-//     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-//         glfwSetWindowShouldClose(window, GL_TRUE);
-// }
+    Shader shader("D:\\Programs\\RendererVS\\shaders\\vertexShader.glsl", "D:\\Programs\\RendererVS\\shaders\\fragmentShader.glsl");
+    if (!shader.GetCompilationSuccess()) {
+        return -1;
+    }
 
-// long timediff(clock_t t1, clock_t t2) {
-//     long elapsed;
-//     elapsed = ((double)t2 - t1) / CLOCKS_PER_SEC * 1000;
-//     return elapsed;
-// }SHADER_ERR;
+    Triangle tri = {
+        // Position                 // color
+        { -0.85f, 0.85f, 0.0f }, {  1.0f, 0.0f, 0.0f }, // top left  
+        { -0.85f, 0.15f, 0.0f }, {  0.0f, 1.0f, 0.0f },// bottom left 
+        { -0.15f, 0.85f, 0.0f }, {  0.0f, 0.0f, 1.0f }, // top right
+    };
 
-// float vertRect1[] = {
-//     -0.15f, 0.85f, 0.0f,     1.0f, 0.0f, 0.0f,  // top right
-//     -0.15f, 0.15f, 0.0f,     0.0f, 1.0f, 0.0f, // bottom right
-//     -0.85f, 0.15f, 0.0f,     0.0f, 0.0f, 1.0f, // bottom left
-//     -0.85f, 0.85f, 0.0f,     1.0f, 1.0f, 1.0f,   // top left 
-// };
-// unsigned int indRect1[] = {  // note that we start from 0!
-//     0, 1, 3,  // first Triangle
-//     1, 2, 3   // second Triangle
-// };
+    Triangle tri2 = {
+        // Position                 // color
+        { -0.15f, 0.85f, 0.0f }, {  1.0f, 0.0f, 0.0f },// top right
+        { -0.15f, 0.15f, 0.0f }, {  0.0f, 1.0f, 0.0f },// bottom right
+        { -0.85f, 0.15f, 0.0f }, {  0.0f, 0.0f, 1.0f },// bottom left // color
+    };
 
-// float vertRect2[] = {
-//     0.85f, -0.15f, 0.0f,  1.0f, 0.0f, 0.0f,// top right
-//     0.85f, -0.85f, 0.0f,  0.0f, 1.0f, 0.0f,// bottom right
-//     0.15f, -0.85f, 0.0f,  0.0f, 0.0f, 1.0f,// bottom left
-//     0.15f, -0.15f, 0.0f,  0.5f, 0.5f, 0.5f,// top left 
-// };
-// unsigned int indRect2[] = {  // note that we start from 0!
-//     0, 1, 3,  // first Triangle
-//     1, 2, 3   // second Triangle
-// };
+    Triangles col;
+    col.AddTriangle(tri);
+    //col.AddTriangle(tri2);
+
+    RectangleManager recMan;
+
+    for (int i = 0; i < 100; i++) {
+
+        recMan.AddRectangle(raf(-1.0f, 1.0f), \
+            raf(-1.0f, 1.0f), \
+            raf(0.15f, 0.25f), \
+            raf(0.15f, 0.25f), \
+            { raf(0.0f, 1.0f), raf(0.0f, 1.0f), raf(0.0f, 1.0f)} );
 
 
-// int WinMain(void){
+    }
 
-//     if(!glfwInit()){
-//         printf("glfw cannot Init");
-//         return -1;
-//     }
-//     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-//     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-//     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    RoundedRectManager round;
+    float rad = 0.05f;
 
-//     GLFWwindow* window = glfwCreateWindow(800, 600, "Learning", NULL, NULL);
-//     if(window == NULL){
-//         printf("Could Not Open Window");
-//         glfwTerminate();
-//         return -1;
-//     }
+    //std::array<glm::vec3, 4> centers = round.GetCenters({ 1.5f, 1.0f }, rad);
+    //round.AddCircle(centers[0], rad, 128, {1.0f, 0.0f, 0.0f});
+    //round.AddCircle(centers[1], rad, 128, { 0.0f, 1.0f, 0.0f });
+    //round.AddCircle(centers[2], rad, 128, { 0.0f, 0.0f, 1.0f });
+    //round.AddCircle(centers[3], rad, 128, { 1.0f, 1.0f, 1.0f });
+    round.AddRoundedRect({ -0.75f, 0.75f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 8, { 1.0f, 1.0f, 1.0f });
+    round.AddRoundedRect({ 0.0f, 0.0f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 32, { 1.0f, 1.0f, 1.0f });
+    round.AddRoundedRect({ 0.75f, -0.75f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 64, { 1.0f, 1.0f, 1.0f });
+    round.AddCircle({ -0.75f, -0.75f, 1.0f }, 0.1f, 3, { 1.0f, 1.0f, 1.0f });
 
-//     glfwMakeContextCurrent(window);
 
-//     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-//         printf("Could not init GLAD");
-//         glfwTerminate();
-//         return -1;
-//     }
-    
-//     glViewport(0,0,800,600);
-
-//     Shader shader;
-//     SHADER_ERR err = CreateShader(&shader, "D:\\Programs\\Renderer\\shaders\\vertexShader.glsl", "D:\\Programs\\Renderer\\shaders\\fragmentShader.glsl");
-//     if(err != SHADER_ERR_SUCCESS){
-//         return err;
-//     }
-
-//     PointsDatabase data;
-//     PointsManager manager = &data;
-//     createManager(manager, shader);
-
-//     Point p = {0.0f, 0.0f, 0.0f};
-
-//     float widthfactor = 1.0f/400.0f;
-
-//     for(int i = 0; i < 100; i++){
-//         p.x += widthfactor;
-//         AddPoint(manager, p);
-//     }
+    ////recMan.AddRectangle(-0.85f, 0.85f, 0.75f, 0.75f, { 1.0f, 0.0f, 0.0f });
+    //recMan.AddRectangle(0.15f, -0.15f, 0.75f, 0.75f, { 0.0f, 1.0f, 0.0f });
+    //recMan.AddRectangle(0.15f, 0.85f, 0.75f, 0.75f, { 0.0f, 0.0f, 1.0f });
+    //recMan.AddRectangle(-0.85f, -0.15f, 0.75f, 0.75f, { 1.0f, 1.0f, 1.0f });
 
 
 
-//     // unsigned int VBO[2];
-//     // unsigned int VAO[2];
-//     // unsigned int EBO[2];
+    while (!glfwWindowShouldClose(window))
+    {   
+        glClearColor(61.0f/255.0f, 61.0f/255.0f, 61.0f/255.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-//     // glGenVertexArrays(2, VAO);
-//     // glGenBuffers(2, VBO);
-//     // glGenBuffers(2, EBO);
+        shader.Use();
+        glm::mat4 trans = glm::mat4(1.0f);
+        //trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        //trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        shader.SetMat4f("transform", trans);
+        round.Render();
+        //for (int i = 0; i < 100; i++) {
 
-//     // glBindVertexArray(VAO[0]);
-
-//     // glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);  
-//     // glBufferData(GL_ARRAY_BUFFER, sizeof(vertRect1), vertRect1, GL_STATIC_DRAW);
-
-//     // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
-//     // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indRect1), indRect1, GL_STATIC_DRAW);
-
-//     // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-//     // glEnableVertexAttribArray(0); 
-    
-//     // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
-//     // glEnableVertexAttribArray(1);
-
-//     // // resetting/unbinding, not usually used
-//     // glBindBuffer(GL_ARRAY_BUFFER, 0);
-//     // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-//     // glBindVertexArray(0);
-
-//     // glBindVertexArray(VAO[1]);
-
-//     // glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
-//     // glBufferData(GL_ARRAY_BUFFER, sizeof(vertRect2), vertRect2, GL_STATIC_DRAW);
-
-//     // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[1]);
-//     // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indRect2), indRect2, GL_STATIC_DRAW);
-
-//     // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-//     // glEnableVertexAttribArray(0);
-    
-//     // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
-//     // glEnableVertexAttribArray(1);
-
-//     // glBindBuffer(GL_ARRAY_BUFFER, 0);
-//     // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-//     // glBindVertexArray(0);
+        //    recMan.SetVertexColor(i, RectangleManager::Corners::All, { raf(0.0f, 1.0f), raf(0.0f, 1.0f), raf(0.0f, 1.0f)});
 
 
-//     // mat4 mat;
+        //}
 
-//     // // making the translation vector
-//     // vec3 transVec = {1.0f, 1.0f, 0.0f};
-//     // // creating the required matrix from the translation vector
-//     // glm_translate_make(mat, transVec);
-//     // // original "position" to translate
-//     // vec4 vec = {1.0f, 0.0f, 0.0f, 1.0f};
-//     // // get final position
-//     // vec4s final;
-//     // glm_mat4_mulv(mat, vec, final.raw);
-//     // printf("%f, %f, %f\n\n\n", final.x, final.y, final.z);
+        //recMan.Render();
+        //col.Render();
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 
-//     // look at : https://cglm.readthedocs.io/en/latest/affine.html
-//     // SCALE -> ROTATE -> TRANSLATE
-//     // glm_mat4_mulN((mat4 *[]){&transform3, &transform2, &transform1}, 3, finalTransform);
-//     // Now transform1 will be applied first, then transform2 then transform3
-//     // so transform 1 -> scale, transform 2 -> rotation, transform 3-> scale
+    glfwTerminate();
+    return 0;
 
+	return 0;
+}
 
-
-
-//     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-//     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
-//     clock_t startTime, endTime;
-//     long diff;
-//     vec3 trans = {0.0f, 0.0f, 0.0f};
-//     while(!glfwWindowShouldClose(window)){
-//         startTime = clock();
-//         processInput(window);
-//         glClearColor(61.0f/255.0f, 61.0f/255.0f, 61.0f/255.0f, 1.0f);
-//         glClear(GL_COLOR_BUFFER_BIT);
-
-//         // UseShader(&shader);
-//         float timeValue = glfwGetTime();
-//         float offsetA = (sin(timeValue) /2.0f);
-//         float offsetB = (cos(timeValue) / 2.0f);
-//         // SetFloat3(&shader, "offset", offsetA, offsetB, 0.0f);
-//         trans[0] = offsetA;
-//         trans[1] = offsetB;
-
-//         UpdatePoint(manager, 0, trans);
-//         RenderPoints(manager);
-
-//         // glBindVertexArray(VAO[0]);
-//         // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
-//         // // glDrawArrays(GL_TRIANGLES, 0, 3);
-//         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-//         // SetFloat3(&shader, "offset", -offsetA, -offsetB, 0.0f);
-
-//         // glBindVertexArray(VAO[1]);
-//         // // glDrawArrays(GL_TRIANGLES, 0, 3);
-//         // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[1]);
-//         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-//         glfwSwapBuffers(window);
-//         glfwPollEvents();
-//         endTime = clock();
-//         diff = timediff(startTime, endTime);
-//         printf("Frame time: %f\r", 1000.0f/(double)diff);
-//     }
-
-//     // glDeleteVertexArrays(2, VAO);
-//     // glDeleteBuffers(2, VBO);
-//     // glDeleteBuffers(2, EBO);
-//     DeletePoints(manager);
-//     DeleteShader(&shader);
-
-//     glfwTerminate();
-//     return 0;
-    
-//     return 1;
-// }
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
