@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int OpenShaderFiles(const char* vertexFilePath, const char* fragmentFilePath, char** vertexCode, char** fragCode);
+SHADER_ERR OpenShaderFiles(const char* vertexFilePath, const char* fragmentFilePath, char** vertexCode, char** fragCode);
 
 /**
  * @brief Create a Shader object
@@ -12,7 +12,7 @@ int OpenShaderFiles(const char* vertexFilePath, const char* fragmentFilePath, ch
  * @param [in] fragmentFilePath 
  * @return int SHADER_ERR
  */
-int CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmentFilePath){
+SHADER_ERR CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmentFilePath){
 
     char* vertexCode;
     char* fragmentCode;
@@ -78,7 +78,7 @@ int CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmen
  * @param [in] shader 
  * @return int SHADER_ERR
  */
-int UseShader(Shader* shader){
+SHADER_ERR UseShader(Shader* shader){
 
     if(shader->m_linked == false || shader->m_ID == 0){
         return SHADER_ERR_ACTIVE_FAILED;
@@ -96,7 +96,7 @@ int UseShader(Shader* shader){
  * @param shader 
  * @return int 
  */
-int DeleteShader(Shader* shader){
+SHADER_ERR DeleteShader(Shader* shader){
     glDeleteProgram(shader->m_ID);
     shader->m_using = false;
     shader->m_linked = false;
@@ -112,7 +112,7 @@ int DeleteShader(Shader* shader){
  * @param [in] value value to set to
  * @return int SHADER_ERR
  */
-int SetBool(const Shader* shader, const char* name, bool value){
+SHADER_ERR SetBool(const Shader* shader, const char* name, bool value){
 
     if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
 
@@ -134,7 +134,7 @@ int SetBool(const Shader* shader, const char* name, bool value){
  * @param [in] value value to set to
  * @return int SHADER_ERR
  */
-int SetInt(const Shader* shader, const char* name, int value){
+SHADER_ERR SetInt(const Shader* shader, const char* name, int value){
 
     if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
 
@@ -156,7 +156,7 @@ int SetInt(const Shader* shader, const char* name, int value){
  * @param [in] value value to set to
  * @return int SHADER_ERR
  */
-int SetFloat(const Shader* shader, const char* name, float value){
+SHADER_ERR SetFloat(const Shader* shader, const char* name, float value){
 
     if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
 
@@ -170,7 +170,7 @@ int SetFloat(const Shader* shader, const char* name, float value){
 
 }
 
-int SetFloat3(const Shader *shader, const char *name, float value1, float value2, float value3){
+SHADER_ERR SetFloat3(const Shader *shader, const char *name, float value1, float value2, float value3){
     
     if(shader->m_linked == false) return SHADER_ERR_LINKING_FAILED;
 
@@ -193,7 +193,7 @@ int SetFloat3(const Shader *shader, const char *name, float value1, float value2
  * @param [out] fragCode 
  * @return int SHADER_ERR
  */
-int OpenShaderFiles(const char* vertexFilePath, const char* fragmentFilePath, char** vertexCode, char** fragCode){
+SHADER_ERR OpenShaderFiles(const char* vertexFilePath, const char* fragmentFilePath, char** vertexCode, char** fragCode){
 
     // Open both files
     FILE* vertexFile = fopen(vertexFilePath, "rb+");

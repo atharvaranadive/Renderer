@@ -23,14 +23,14 @@ typedef struct {
 
 } Shader;
 
-int CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmentFilePath);
-int UseShader(Shader* shader);
-int DeleteShader(Shader* shader);
+SHADER_ERR CreateShader(Shader* shader, const char* vertexFilePath, const char* fragmentFilePath);
+SHADER_ERR UseShader(Shader* shader);
+SHADER_ERR DeleteShader(Shader* shader);
 
-int SetBool(const Shader* shader, const char* name, bool value);
-int SetInt(const Shader* Shader, const char* name, int value);
-int SetFloat(const Shader* shader, const char* name, float value);
+SHADER_ERR SetBool(const Shader* shader, const char* name, bool value);
+SHADER_ERR SetInt(const Shader* Shader, const char* name, int value);
+SHADER_ERR SetFloat(const Shader* shader, const char* name, float value);
 
-int SetFloat3(const Shader* shader, const char* name, float value1, float value2, float value3);
+SHADER_ERR SetFloat3(const Shader* shader, const char* name, float value1, float value2, float value3);
 
 #endif // SHADERS_H

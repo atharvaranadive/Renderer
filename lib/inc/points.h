@@ -24,6 +24,8 @@ typedef struct {
 
     float* m_vertices;
 
+    bool m_created;
+
 } PointsDatabase;
 
 typedef PointsDatabase* PointsManager;
@@ -33,6 +35,6 @@ void AddPoint(PointsManager man, Point point);
 void RenderPoints(PointsManager man);
 
 void UpdatePoint(PointsManager man, uint32_t index, vec3 translate);
-
+void DeletePoints(PointsManager man);
 
 #endif // _POINTS_H_

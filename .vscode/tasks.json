@@ -1,9 +1,9 @@
 {
     "tasks": [
         {
-            "type": "shell",
+            "type": "process",
             "label": "run the makefile",
-            "command": "/c/msys64/mingw64/bin/mingw32-make.exe",
+            "command": "C:/WinLabs-mingw64/bin/mingw32-make.exe",
             "args": ["all"],
             "problemMatcher": [],
         }
