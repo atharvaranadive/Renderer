@@ -5,6 +5,7 @@
 #include <iostream>
 #include <array>
 #include "Shaders.h"
+#include "Cube.h"
 #include "Triangles.h"
 #include "Rectangles.h"
 #include "RoundedRect.h"
@@ -46,15 +47,12 @@ int main(void) {
     }
 
     glViewport(0, 0, 800, 600);
+    glEnable(GL_DEPTH_TEST);
 
     Shader shader("D:\\Programs\\Renderer\\Renderer\\shaders\\vertexShader.glsl", "D:\\Programs\\Renderer\\Renderer\\shaders\\fragmentShader.glsl");
     if (!shader.GetCompilationSuccess()) {
         return -1;
     }
-
-    RoundedRectManager round;
-    round.AddRoundedRect({ 0.f, 0.f, 1.0f }, { 0.75f, 0.75f }, 0.05f, 32, { 1.0f, 1.0f, 1.0f });
-
 
     glm::mat4 view = glm::mat4(1.0f);
     // note that we're translating the scene in the reverse direction of where we want to move
@@ -63,7 +61,8 @@ int main(void) {
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
-
+    CubeManager man;
+    man.AddCube(0.75f);
 
 
 
@@ -81,14 +80,14 @@ int main(void) {
     while (!glfwWindowShouldClose(window))
     {   
         glClearColor(61.0f/255.0f, 61.0f/255.0f, 61.0f/255.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader.Use();
 
         glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         glm::mat4 view = glm::mat4(1.0f);
         glm::mat4 projection = glm::mat4(1.0f);
-        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 
@@ -104,7 +103,7 @@ int main(void) {
         shader.SetMat4f("view", view);
         shader.SetMat4f("model", model);
         shader.SetMat4f("projection", projection);
-        round.Render();
+        man.Render();
         //for (int i = 0; i < 100; i++) {
 
         //    recMan.SetVertexColor(i, RectangleManager::Corners::All, { raf(0.0f, 1.0f), raf(0.0f, 1.0f), raf(0.0f, 1.0f)});
