@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programs\\Renderer\\Renderer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|D:\\Programs\\Renderer\\Renderer\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|D:\\Programs\\Renderer\\Renderer\\src\\Cube.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|solutionrelative:src\\Cube.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|D:\\Programs\\Renderer\\Renderer\\src\\Rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E522FC3C-9965-4640-A183-5A068CAF1E30}|Renderer.vcxproj|solutionrelative:src\\Rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 329,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cube.cpp",
+              "DocumentMoniker": "D:\\Programs\\Renderer\\Renderer\\src\\Cube.cpp",
+              "RelativeDocumentMoniker": "src\\Cube.cpp",
+              "ToolTip": "D:\\Programs\\Renderer\\Renderer\\src\\Cube.cpp",
+              "RelativeToolTip": "src\\Cube.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-18T03:04:35.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Rectangle.cpp",
+              "DocumentMoniker": "D:\\Programs\\Renderer\\Renderer\\src\\Rectangle.cpp",
+              "RelativeDocumentMoniker": "src\\Rectangle.cpp",
+              "ToolTip": "D:\\Programs\\Renderer\\Renderer\\src\\Rectangle.cpp",
+              "RelativeToolTip": "src\\Rectangle.cpp",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAMwGMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-18T03:04:25.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Programs\\Renderer\\Renderer\\src\\main.cpp",
+              "RelativeDocumentMoniker": "src\\main.cpp",
+              "ToolTip": "D:\\Programs\\Renderer\\Renderer\\src\\main.cpp",
+              "RelativeToolTip": "src\\main.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-18T02:58:39.419Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,10 @@
 #include "Rectangles.h"
 #include "RoundedRect.h"
 
+// settings
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 float raf(float a, float b) {
@@ -25,7 +29,7 @@ int main(void) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -43,61 +47,35 @@ int main(void) {
 
     glViewport(0, 0, 800, 600);
 
-    Shader shader("D:\\Programs\\RendererVS\\shaders\\vertexShader.glsl", "D:\\Programs\\RendererVS\\shaders\\fragmentShader.glsl");
+    Shader shader("D:\\Programs\\Renderer\\Renderer\\shaders\\vertexShader.glsl", "D:\\Programs\\Renderer\\Renderer\\shaders\\fragmentShader.glsl");
     if (!shader.GetCompilationSuccess()) {
         return -1;
     }
 
-    Triangle tri = {
-        // Position                 // color
-        { -0.85f, 0.85f, 0.0f }, {  1.0f, 0.0f, 0.0f }, // top left  
-        { -0.85f, 0.15f, 0.0f }, {  0.0f, 1.0f, 0.0f },// bottom left 
-        { -0.15f, 0.85f, 0.0f }, {  0.0f, 0.0f, 1.0f }, // top right
-    };
-
-    Triangle tri2 = {
-        // Position                 // color
-        { -0.15f, 0.85f, 0.0f }, {  1.0f, 0.0f, 0.0f },// top right
-        { -0.15f, 0.15f, 0.0f }, {  0.0f, 1.0f, 0.0f },// bottom right
-        { -0.85f, 0.15f, 0.0f }, {  0.0f, 0.0f, 1.0f },// bottom left // color
-    };
-
-    Triangles col;
-    col.AddTriangle(tri);
-    //col.AddTriangle(tri2);
-
-    RectangleManager recMan;
-
-    for (int i = 0; i < 100; i++) {
-
-        recMan.AddRectangle(raf(-1.0f, 1.0f), \
-            raf(-1.0f, 1.0f), \
-            raf(0.15f, 0.25f), \
-            raf(0.15f, 0.25f), \
-            { raf(0.0f, 1.0f), raf(0.0f, 1.0f), raf(0.0f, 1.0f)} );
-
-
-    }
-
     RoundedRectManager round;
-    float rad = 0.05f;
-
-    //std::array<glm::vec3, 4> centers = round.GetCenters({ 1.5f, 1.0f }, rad);
-    //round.AddCircle(centers[0], rad, 128, {1.0f, 0.0f, 0.0f});
-    //round.AddCircle(centers[1], rad, 128, { 0.0f, 1.0f, 0.0f });
-    //round.AddCircle(centers[2], rad, 128, { 0.0f, 0.0f, 1.0f });
-    //round.AddCircle(centers[3], rad, 128, { 1.0f, 1.0f, 1.0f });
-    round.AddRoundedRect({ -0.75f, 0.75f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 8, { 1.0f, 1.0f, 1.0f });
-    round.AddRoundedRect({ 0.0f, 0.0f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 32, { 1.0f, 1.0f, 1.0f });
-    round.AddRoundedRect({ 0.75f, -0.75f, 1.0f }, { 0.25f, 0.25f }, 0.05f, 64, { 1.0f, 1.0f, 1.0f });
-    round.AddCircle({ -0.75f, -0.75f, 1.0f }, 0.1f, 3, { 1.0f, 1.0f, 1.0f });
+    round.AddRoundedRect({ 0.f, 0.f, 1.0f }, { 0.75f, 0.75f }, 0.05f, 32, { 1.0f, 1.0f, 1.0f });
 
 
-    ////recMan.AddRectangle(-0.85f, 0.85f, 0.75f, 0.75f, { 1.0f, 0.0f, 0.0f });
-    //recMan.AddRectangle(0.15f, -0.15f, 0.75f, 0.75f, { 0.0f, 1.0f, 0.0f });
-    //recMan.AddRectangle(0.15f, 0.85f, 0.75f, 0.75f, { 0.0f, 0.0f, 1.0f });
-    //recMan.AddRectangle(-0.85f, -0.15f, 0.75f, 0.75f, { 1.0f, 1.0f, 1.0f });
+    glm::mat4 view = glm::mat4(1.0f);
+    // note that we're translating the scene in the reverse direction of where we want to move
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 
+    glm::mat4 projection;
+    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+
+
+
+
+
+
+
+
+
+    // pass projection matrix to shader (as projection matrix rarely changes there's no need to do this per frame)
+    // -----------------------------------------------------------------------------------------------------------
+    //glm::mat4 projection = glm::mat4(1.0f);
+    //projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 
 
     while (!glfwWindowShouldClose(window))
@@ -106,10 +84,26 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.Use();
-        glm::mat4 trans = glm::mat4(1.0f);
-        //trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-        //trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-        shader.SetMat4f("transform", trans);
+
+        glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        glm::mat4 view = glm::mat4(1.0f);
+        glm::mat4 projection = glm::mat4(1.0f);
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
+        //glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        /*float radius = 10.0f;
+        float camX = static_cast<float>(sin(glfwGetTime()) * radius);
+        float camZ = static_cast<float>(cos(glfwGetTime()) * radius);
+        view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));*/
+        
+        //glm::mat4 trans = glm::mat4(1.0f);
+        ////trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        ////trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        shader.SetMat4f("view", view);
+        shader.SetMat4f("model", model);
+        shader.SetMat4f("projection", projection);
         round.Render();
         //for (int i = 0; i < 100; i++) {
 
